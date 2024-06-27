@@ -1,15 +1,23 @@
 import React from 'react';
 import { View, TextInput, Button, Text, Image, StyleSheet } from 'react-native';
 
-const LoginForm = ({ navigation }) => {
+const CreateAccountForm = ({ navigation }) => {
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>Crear cuenta</Text>
       <Image 
-        source={require('../assets/samsulek.png')} // Asegúrate de que esta ruta sea correcta
+        source={require('../assets/infernus.png')} // Asegúrate de que esta ruta sea correcta
         style={styles.image} 
       />
-      <Text style={styles.welcomeText}>Bienvenido</Text>
       <Text style={styles.subText}>Ingresa tus datos</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Primer nombre"
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Apellido"
+      />
       <TextInput
         style={styles.input}
         placeholder="Correo electrónico"
@@ -21,14 +29,18 @@ const LoginForm = ({ navigation }) => {
         placeholder="Contraseña"
         secureTextEntry
       />
-      <Text style={styles.forgotPassword}>¿Olvidaste tu contraseña?</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Vuelve a repetir la contraseña"
+        secureTextEntry
+      />
       <Button
-        title="Iniciar Sesión"
-        onPress={() => console.log('Iniciar sesión presionado')}
+        title="Registrarse"
+        onPress={() => console.log('Registrarse presionado')}
         color="#ff6f61"
       />
-      <Text style={styles.createAccount} onPress={() => navigation.navigate('CreateAccount')}>
-        ¿No tienes cuenta? crear una nueva cuenta
+      <Text style={styles.loginText} onPress={() => navigation.navigate('Login')}>
+        ¿Ya tienes cuenta? iniciar Sesión
       </Text>
     </View>
   );
@@ -42,19 +54,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 20,
   },
-  image: {
-    width: 100,  
-    height: 100,
-    marginBottom: 20,
-  },
-  welcomeText: {
+  title: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 10,
+    color: '#fff',
+  },
+  image: {
+    width: 100, // Ajusta el tamaño de la imagen según sea necesario
+    height: 100,
+    marginBottom: 20,
   },
   subText: {
     fontSize: 16,
     marginBottom: 20,
+    color: '#fff',
   },
   input: {
     width: '100%',
@@ -66,15 +80,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     backgroundColor: '#fff',
   },
-  forgotPassword: {
-    alignSelf: 'flex-end',
-    marginBottom: 20,
-    color: '#fff',
-  },
-  createAccount: {
+  loginText: {
     marginTop: 20,
     color: '#fff',
   },
 });
 
-export default LoginForm;
+export default CreateAccountForm;

@@ -33,7 +33,7 @@ const LoginForm = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ff6f61',
+    backgroundColor: '#EC8080',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
