@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const productos = [
   {
@@ -7,35 +8,43 @@ const productos = [
     imagen: require('../assets/image48.png'),
     descripcion: 'Mancuerna Gym Power Rubber Hexagon 4KG\nCon las Mancuernas Gym Power podrás tonificar tus músculos y aumentar tu resistencia. Estas pesas de entrenamiento son de metal y te permiten un mejor agarre para evitar deslizamientos. Combínalas con tu rutina de ejercicios favorita.',
     categoria: 'Mancuernas',
+    precio: 105,
+    disponibles: 20,
   },
   {
     id: 2,
     imagen: require('../assets/image50.png'),
     descripcion: 'Las conocidas como pesas, en el argot del fitness, mancuernas, son el elemento principal para entrenar en casa con resultados, explica Alcázar: “Es el material más versátil y el primero en el que invertir. Pídele a tu más ligero o moderado hasta lo más pesado, según las opciones para compra.',
     categoria: 'Mancuernas',
+    precio: 105,
+    disponibles: 20,
   },
   {
     id: 3,
     imagen: require('../assets/image64.png'),
     descripcion: 'La marca Titanium Strength cubre todas las necesidades con este set de mancuernas + soporte horizontal, de almacenamiento para mancuernas ordenadas. Se trata de un set de 10 pares de mancuernas ergonómicas que van desde los 2,5 kg hasta los 25 kg, así que son ideales para usuarios de poco nivel y para usuarios avanzados.',
     categoria: 'Mancuernas',
+    precio: 105,
+    disponibles: 20,
   },
   {
     id: 4,
     imagen: require('../assets/rectangle37.png'),
     descripcion: 'Las mancuernas de peso fijo son herramientas de entrenamiento versátiles y eficaces diseñadas para fortalecer y tonificar los músculos de todo el cuerpo.',
     categoria: 'Mancuernas',
+    precio: 105,
+    disponibles: 20,
   },
 ];
 
-const ProductosTienda = ({ route, navigation }) => {
+const ProductosTienda = ({ route }) => {
+  const navigation = useNavigation();
   const { category } = route.params;
 
   const productosFiltrados = productos.filter(producto => producto.categoria === category);
 
-  const handlePress = (id) => {
-    // Aquí puedes manejar la navegación o cualquier otra acción al presionar "Ver producto"
-    console.log(`Producto ${id} presionado`);
+  const handlePress = (producto) => {
+    navigation.navigate('InformacionReseñaScreen', { producto });
   };
 
   return (
@@ -44,7 +53,7 @@ const ProductosTienda = ({ route, navigation }) => {
         <View key={producto.id} style={styles.producto}>
           <Image source={producto.imagen} style={styles.imagen} />
           <Text style={styles.descripcion}>{producto.descripcion}</Text>
-          <TouchableOpacity style={styles.boton} onPress={() => handlePress(producto.id)}>
+          <TouchableOpacity style={styles.boton} onPress={() => handlePress(producto)}>
             <Text style={styles.botonTexto}>Ver producto</Text>
           </TouchableOpacity>
         </View>

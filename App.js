@@ -14,6 +14,7 @@ import DashboardScreen from './screens/DashboardScreen';
 import PerfilScreen from './screens/PerfilScreen';
 import SidebarMenu from './components/SidebarMenu';
 import ProductosTienda from './screens/ProductosTienda';
+import InformacionReseñaScreen from './screens/InformacionReseñaScreen';
 
 
 const Stack = createStackNavigator();
@@ -65,6 +66,7 @@ const AppStackNavigator = () => (
     <Stack.Screen name="Perfil" component={PerfilScreen} options={{ title: 'Perfil' }} />
     <Stack.Screen name="Tienda" component={TiendaScreen} options={{ title: 'Tienda' }} />
     <Stack.Screen name="ProductosTienda" component={ProductosTienda} options={{ title: 'Productos Tienda' }} />
+    <Stack.Screen name="InformacionReseñaScreen" component={InformacionReseñaScreen} />
   </Stack.Navigator>
 );
 
