@@ -1,53 +1,48 @@
+// components/SidebarMenu.js
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
+import AsyncStorage from '@react-native-async-storage/async-storage'; // Asegúrate de importar AsyncStorage
 
-const SidebarMenu = ({ navigation, isLoggedIn, setIsLoggedIn }) => {
+const SidebarMenu = (props) => {
+  const { isLoggedIn, setIsLoggedIn } = props;
+
   const handleLogout = async () => {
     await AsyncStorage.removeItem('userToken');
     setIsLoggedIn(false);
-    navigation.navigate('AuthStack');
   };
 
   return (
-    <View style={styles.container}>
-      {isLoggedIn ? (
-        <>
-          <TouchableOpacity onPress={() => navigation.navigate('AppStack', { screen: 'Dashboard' })}>
-            <Text style={styles.menuItem}>Inicio</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={handleLogout}>
-            <Text style={styles.menuItem}>Cerrar Sesión</Text>
-          </TouchableOpacity>
-        </>
-      ) : (
-        <>
-          <TouchableOpacity onPress={() => navigation.navigate('AuthStack', { screen: 'Login' })}>
-            <Text style={styles.menuItem}>Iniciar Sesión</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('AuthStack', { screen: 'CreateAccount' })}>
-            <Text style={styles.menuItem}>Crear Cuenta</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('AuthStack', { screen: 'RecoverPassword' })}>
-            <Text style={styles.menuItem}>Recuperar Contraseña</Text>
-          </TouchableOpacity>
-        </>
+    <View style={{ flex: 1 }}>
+      <DrawerContentScrollView {...props}>
+        <DrawerItemList {...props} />
+        {isLoggedIn && (
+          <>
+            <TouchableOpacity style={styles.menuItem} onPress={() => props.navigation.navigate('Dashboard')}>
+              <Text style={styles.menuItemText}>Inicio</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.menuItem} onPress={() => props.navigation.navigate('Perfil')}>
+              <Text style={styles.menuItemText}>Perfil</Text>
+            </TouchableOpacity>
+          </>
+        )}
+      </DrawerContentScrollView>
+      {isLoggedIn && (
+        <TouchableOpacity style={styles.menuItem} onPress={handleLogout}>
+          <Text style={styles.menuItemText}>Cerrar Sesión</Text>
+        </TouchableOpacity>
       )}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#EC8080',
-    paddingTop: 50,
-    paddingHorizontal: 20,
-  },
   menuItem: {
-    fontSize: 18,
-    marginVertical: 10,
-    color: '#fff',
+    padding: 20,
+  },
+  menuItemText: {
+    fontSize: 16,
+    color: '#000',
   },
 });
 

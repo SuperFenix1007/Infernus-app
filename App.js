@@ -1,3 +1,4 @@
+// App.js
 import 'react-native-gesture-handler';  // Asegúrate de que esta importación esté al principio
 import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
@@ -10,15 +11,16 @@ import CreateAccountScreen from './screens/CreateAccountScreen';
 import RecoverPasswordScreen from './screens/RecoverPasswordScreen';
 import SetNewPasswordScreen from './screens/SetNewPasswordScreen';
 import DashboardScreen from './screens/DashboardScreen';
+import PerfilScreen from './screens/PerfilScreen';
 import SidebarMenu from './components/SidebarMenu';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-const AuthStackNavigator = ({ navigation }) => (
+const AuthStackNavigator = () => (
   <Stack.Navigator
     initialRouteName="Login"
-    screenOptions={{
+    screenOptions={({ navigation }) => ({
       headerStyle: {
         backgroundColor: '#FF6F61',
       },
@@ -31,7 +33,7 @@ const AuthStackNavigator = ({ navigation }) => (
           <Image source={require('./assets/menu.png')} style={{ marginLeft: 10, width: 24, height: 24 }} />
         </TouchableOpacity>
       ),
-    }}
+    })}
   >
     <Stack.Screen name="Login" component={LoginScreen} options={{ title: 'Iniciar Sesión' }} />
     <Stack.Screen name="CreateAccount" component={CreateAccountScreen} options={{ title: 'Crear Cuenta' }} />
@@ -40,10 +42,10 @@ const AuthStackNavigator = ({ navigation }) => (
   </Stack.Navigator>
 );
 
-const AppStackNavigator = ({ navigation }) => (
+const AppStackNavigator = () => (
   <Stack.Navigator
     initialRouteName="Dashboard"
-    screenOptions={{
+    screenOptions={({ navigation }) => ({
       headerStyle: {
         backgroundColor: '#FF6F61',
       },
@@ -56,9 +58,10 @@ const AppStackNavigator = ({ navigation }) => (
           <Image source={require('./assets/menu.png')} style={{ marginLeft: 10, width: 24, height: 24 }} />
         </TouchableOpacity>
       ),
-    }}
+    })}
   >
     <Stack.Screen name="Dashboard" component={DashboardScreen} options={{ title: 'Inicio' }} />
+    <Stack.Screen name="Perfil" component={PerfilScreen} options={{ title: 'Perfil' }} />
   </Stack.Navigator>
 );
 
