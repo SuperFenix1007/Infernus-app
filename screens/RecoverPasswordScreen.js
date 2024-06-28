@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import LoginForm from '../components/LoginForm';
+import RecoverPasswordForm from '../components/RecoverPasswordForm';
 
-const LoginScreen = ({ navigation }) => {
+const RecoverPasswordScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <LoginForm navigation={navigation} />
+      <RecoverPasswordForm navigation={navigation} />
     </View>
   );
 };
@@ -16,4 +16,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginScreen;
+export default RecoverPasswordScreen;

@@ -4,26 +4,27 @@ import InputField from './InputField';
 import FormButton from './FormButton';
 import FormHeader from './FormHeader';
 
-const RecoverPasswordForm = ({ navigation }) => {
+const SetNewPasswordForm = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <FormHeader 
         title="Recuperación de contraseña" 
-        subtitle="Ingrese su correo electrónico para recibir el código de recuperación de cuenta"
+        subtitle="" 
         showImage={true}
       />
-      <InputField placeholder="Correo Electrónico" keyboardType="email-address" />
-      <FormButton
-        title="Enviar"
-        onPress={() => console.log('Enviar correo electrónico presionado')}
+      <Text style={styles.instructionText}>Ingrese su nueva contraseña</Text>
+      <InputField 
+        placeholder="Nueva contraseña" 
+        secureTextEntry 
       />
-      <FormHeader 
-        subtitle="Ingrese el código de recuperación recibido en su correo"
+      <Text style={styles.instructionText}>Repita su nueva contraseña</Text>
+      <InputField 
+        placeholder="Repita su nueva contraseña" 
+        secureTextEntry 
       />
-      <InputField placeholder="Código de recuperación" />
       <FormButton
-        title="Enviar"
-        onPress={() => navigation.navigate('SetNewPassword')}
+        title="Restaurar"
+        onPress={() => console.log('Restaurar contraseña presionado')}
       />
       <Text style={styles.loginText} onPress={() => navigation.navigate('Login')}>
         ¿Ya tienes cuenta? iniciar Sesión
@@ -40,10 +41,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 20,
   },
+  instructionText: {
+    fontSize: 16,
+    color: '#fff',
+    marginBottom: 10,
+  },
   loginText: {
     marginTop: 20,
     color: '#fff',
   },
 });
 
-export default RecoverPasswordForm;
+export default SetNewPasswordForm;

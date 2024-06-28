@@ -1,9 +1,13 @@
 import React from 'react';
-import { View, TextInput, Button, Text, StyleSheet } from 'react-native';
+import { View, TextInput, Button, Text, Image, StyleSheet } from 'react-native';
 
 const LoginForm = ({ navigation }) => {
   return (
     <View style={styles.container}>
+      <Image 
+        source={require('../assets/samsulek.png')} // Asegúrate de que esta ruta sea correcta
+        style={styles.image} 
+      />
       <Text style={styles.welcomeText}>Bienvenido</Text>
       <Text style={styles.subText}>Ingresa tus datos</Text>
       <TextInput
@@ -17,13 +21,25 @@ const LoginForm = ({ navigation }) => {
         placeholder="Contraseña"
         secureTextEntry
       />
-      <Text style={styles.forgotPassword}>¿Olvidaste tu contraseña?</Text>
+      <Text 
+        style={styles.forgotPassword}
+        onPress={() => navigation.navigate('RecoverPassword')}
+      >
+        ¿Olvidaste tu contraseña?
+      </Text>
       <Button
         title="Iniciar Sesión"
-        onPress={() => console.log('Iniciar sesión presionado')}
+        onPress={() => {
+          // Simula iniciar sesión guardando un token y navegando al Dashboard
+          AsyncStorage.setItem('userToken', 'abc');
+          navigation.navigate('AppStack', { screen: 'Dashboard' });
+        }}
         color="#ff6f61"
       />
-      <Text style={styles.createAccount} onPress={() => navigation.navigate('CreateAccount')}>
+      <Text 
+        style={styles.createAccount}
+        onPress={() => navigation.navigate('CreateAccount')}
+      >
         ¿No tienes cuenta? crear una nueva cuenta
       </Text>
     </View>
@@ -37,6 +53,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
+  },
+  image: {
+    width: 100,  
+    height: 100,
+    marginBottom: 20,
   },
   welcomeText: {
     fontSize: 24,

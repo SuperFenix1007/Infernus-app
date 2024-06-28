@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import LoginForm from '../components/LoginForm';
+import SetNewPasswordForm from '../components/SetNewPasswordForm';
 
-const LoginScreen = ({ navigation }) => {
+const SetNewPasswordScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <LoginForm navigation={navigation} />
+      <SetNewPasswordForm navigation={navigation} />
     </View>
   );
 };
@@ -16,4 +16,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginScreen;
+export default SetNewPasswordScreen;
