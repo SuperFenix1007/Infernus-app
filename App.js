@@ -1,4 +1,3 @@
-// App.js
 import 'react-native-gesture-handler';  // Asegúrate de que esta importación esté al principio
 import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
@@ -10,6 +9,7 @@ import LoginScreen from './screens/LoginScreen';
 import CreateAccountScreen from './screens/CreateAccountScreen';
 import RecoverPasswordScreen from './screens/RecoverPasswordScreen';
 import SetNewPasswordScreen from './screens/SetNewPasswordScreen';
+import TiendaScreen from './screens/TiendaScreen';   
 import DashboardScreen from './screens/DashboardScreen';
 import PerfilScreen from './screens/PerfilScreen';
 import SidebarMenu from './components/SidebarMenu';
@@ -62,6 +62,7 @@ const AppStackNavigator = () => (
   >
     <Stack.Screen name="Dashboard" component={DashboardScreen} options={{ title: 'Inicio' }} />
     <Stack.Screen name="Perfil" component={PerfilScreen} options={{ title: 'Perfil' }} />
+    <Stack.Screen name="Tienda" component={TiendaScreen} options={{ title: 'Tienda' }} />
   </Stack.Navigator>
 );
 
@@ -83,7 +84,10 @@ const App = () => {
     <NavigationContainer>
       <Drawer.Navigator drawerContent={(props) => <SidebarMenu {...props} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}>
         {isLoggedIn ? (
-          <Drawer.Screen name="AppStack" component={AppStackNavigator} />
+          <>
+            <Drawer.Screen name="AppStack" component={AppStackNavigator} />
+            <Drawer.Screen name="Tienda" component={TiendaScreen} options={{ title: 'Tienda' }} />
+          </>
         ) : (
           <Drawer.Screen name="AuthStack" component={AuthStackNavigator} />
         )}
