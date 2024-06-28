@@ -13,6 +13,8 @@ import TiendaScreen from './screens/TiendaScreen';
 import DashboardScreen from './screens/DashboardScreen';
 import PerfilScreen from './screens/PerfilScreen';
 import SidebarMenu from './components/SidebarMenu';
+import ProductosTienda from './screens/ProductosTienda';
+
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -41,7 +43,6 @@ const AuthStackNavigator = () => (
     <Stack.Screen name="SetNewPassword" component={SetNewPasswordScreen} options={{ title: 'Establecer Nueva Contraseña' }} />
   </Stack.Navigator>
 );
-
 const AppStackNavigator = () => (
   <Stack.Navigator
     initialRouteName="Dashboard"
@@ -63,6 +64,7 @@ const AppStackNavigator = () => (
     <Stack.Screen name="Dashboard" component={DashboardScreen} options={{ title: 'Inicio' }} />
     <Stack.Screen name="Perfil" component={PerfilScreen} options={{ title: 'Perfil' }} />
     <Stack.Screen name="Tienda" component={TiendaScreen} options={{ title: 'Tienda' }} />
+    <Stack.Screen name="ProductosTienda" component={ProductosTienda} options={{ title: 'Productos Tienda' }} />
   </Stack.Navigator>
 );
 

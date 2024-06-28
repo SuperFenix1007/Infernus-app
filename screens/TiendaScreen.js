@@ -1,14 +1,14 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
 
 const TiendaScreen = ({ navigation }) => {
 
   const handlePress = (category) => {
-    navigation.navigate(category);
+    navigation.navigate('ProductosTienda', { category });
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.row}>
         <View style={styles.card}>
           <Image source={require('../assets/image44.png')} style={styles.image} />
@@ -42,16 +42,17 @@ const TiendaScreen = ({ navigation }) => {
         </View>
       </View>
       <Image source={require('../assets/gym_infernus_icon.png')} style={styles.logo} />
-    </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
     backgroundColor: '#ffe6e6',
     justifyContent: 'center',
     alignItems: 'center',
+    paddingVertical: 20,
   },
   row: {
     flexDirection: 'row',
