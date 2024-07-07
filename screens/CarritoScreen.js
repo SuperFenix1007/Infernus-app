@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { View, Text, Button, FlatList, StyleSheet } from 'react-native';
+import { View, Text, Button, FlatList, StyleSheet, Image } from 'react-native';
 import { CartContext } from '../components/CartContext';
 
 const CarritoScreen = ({ navigation }) => {
@@ -15,6 +15,10 @@ const CarritoScreen = ({ navigation }) => {
     navigation.navigate('Tienda');
   };
 
+  const getTotal = () => {
+    return cartItems.reduce((total, item) => total + item.precio * item.quantity, 0);
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Carrito de Compras</Text>
@@ -23,15 +27,22 @@ const CarritoScreen = ({ navigation }) => {
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <View style={styles.item}>
-            <Text>{item.name}</Text>
-            <Text>Cantidad: {item.quantity}</Text>
-            <Text>Precio: ${item.price}</Text>
+            <Image source={item.imagen} style={styles.image} />
+            <View style={styles.details}>
+              <Text style={styles.name}>{item.nombre}</Text>
+              <Text>Cantidad: {item.quantity}</Text>
+              <Text>Precio: ${item.precio}</Text>
+              <Text>Total: ${item.precio * item.quantity}</Text>
+            </View>
             <Button title="Eliminar" onPress={() => handleRemoveItem(item.id)} />
           </View>
         )}
       />
       {cartItems.length > 0 && (
-        <Button title="Checkout" onPress={handleCheckout} />
+        <View style={styles.footer}>
+          <Text style={styles.total}>Total: ${getTotal()}</Text>
+          <Button title="Checkout" onPress={handleCheckout} />
+        </View>
       )}
     </View>
   );
@@ -53,6 +64,27 @@ const styles = StyleSheet.create({
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: 'gray',
+  },
+  image: {
+    width: 50,
+    height: 50,
+    marginRight: 10,
+  },
+  details: {
+    flex: 1,
+  },
+  name: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  footer: {
+    marginTop: 20,
+    alignItems: 'center',
+  },
+  total: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
   },
 });
 

@@ -8,12 +8,17 @@ const InformacionReseñaScreen = ({ route, navigation }) => {
   const [cantidad, setCantidad] = useState(1);
   const [rating, setRating] = useState(0);
   const [review, setReview] = useState('');
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, cartItems } = useContext(CartContext);
 
   const handleAddToCart = () => {
-    const productToAdd = { ...producto, quantity: cantidad };
-    addToCart(productToAdd);
-    alert('Producto agregado al carrito');
+    const existingItem = cartItems.find(item => item.id === producto.id);
+    if (existingItem) {
+      alert('El producto ya está en el carrito');
+    } else {
+      const productToAdd = { ...producto, quantity: cantidad };
+      addToCart(productToAdd);
+      alert('Producto agregado al carrito');
+    }
   };
 
   const handleAddToWishlist = () => {
