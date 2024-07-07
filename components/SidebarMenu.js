@@ -1,4 +1,3 @@
-// components/SidebarMenu.js
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
@@ -18,7 +17,7 @@ const SidebarMenu = (props) => {
         <DrawerItemList {...props} />
         {isLoggedIn && (
           <>
-            <TouchableOpacity style={styles.menuItem} onPress={() => props.navigation.navigate('Dashboard')}>
+            <TouchableOpacity style={styles.menuItem} onPress={() => props.navigation.navigate('DashboardScreen')}>
               <Text style={styles.menuItemText}>Inicio</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.menuItem} onPress={() => props.navigation.navigate('Perfil')}>

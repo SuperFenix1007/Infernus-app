@@ -6,8 +6,8 @@ const DashboardScreen = ({ navigation }) => {
     <ScrollView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerText}>
-          "Infernus Gym Shop es tu destino para encontrar todo lo necesario para potenciar tu rutina de entrenamiento. Descubre nuestra amplia selección que incluye nutrientes, pesas, ropa deportiva, suplementos nutricionales y accesorios así como equipamiento para entrenar en casa. ¡Nuestros productos de alta calidad están diseñados para mejorar tu rendimiento y ayudarte a alcanzar tus metas fitness. Explora el catálogo y lleva tu entrenamiento al siguiente nivel con Infernus Gym Shop!"
-        </Text>
+          Infernus Gym Shop es tu destino para encontrar todo lo necesario para potenciar tu rutina de entrenamiento. Descubre nuestra amplia selección que incluye nutrientes, pesas, ropa deportiva, suplementos nutricionales y accesorios así como equipamiento para entrenar en casa. ¡Nuestros productos de alta calidad están diseñados para mejorar tu rendimiento y ayudarte a alcanzar tus metas fitness. Explora el catálogo y lleva tu entrenamiento al siguiente nivel con Infernus Gym Shop!"
+          </Text>
       </View>
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Ofertas</Text>

@@ -1,10 +1,10 @@
-import 'react-native-gesture-handler';  // Asegúrate de que esta importación esté al principio
+import 'react-native-gesture-handler';
 import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { TouchableOpacity, Image } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage'; // Para manejar la sesión
+import AsyncStorage from '@react-native-async-storage/async-storage'; 
 import LoginScreen from './screens/LoginScreen';
 import CreateAccountScreen from './screens/CreateAccountScreen';
 import RecoverPasswordScreen from './screens/RecoverPasswordScreen';
@@ -15,7 +15,8 @@ import PerfilScreen from './screens/PerfilScreen';
 import SidebarMenu from './components/SidebarMenu';
 import ProductosTienda from './screens/ProductosTienda';
 import InformacionReseñaScreen from './screens/InformacionReseñaScreen';
-
+import CarritoScreen from './screens/CarritoScreen';  
+import { CartProvider } from './components/CartContext';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -44,9 +45,10 @@ const AuthStackNavigator = () => (
     <Stack.Screen name="SetNewPassword" component={SetNewPasswordScreen} options={{ title: 'Establecer Nueva Contraseña' }} />
   </Stack.Navigator>
 );
+
 const AppStackNavigator = () => (
   <Stack.Navigator
-    initialRouteName="Dashboard"
+    initialRouteName="DashboardScreen"
     screenOptions={({ navigation }) => ({
       headerStyle: {
         backgroundColor: '#FF6F61',
@@ -62,11 +64,11 @@ const AppStackNavigator = () => (
       ),
     })}
   >
-    <Stack.Screen name="Dashboard" component={DashboardScreen} options={{ title: 'Inicio' }} />
+    <Stack.Screen name="DashboardScreen" component={DashboardScreen} options={{ title: 'Inicio' }} />
     <Stack.Screen name="Perfil" component={PerfilScreen} options={{ title: 'Perfil' }} />
-    <Stack.Screen name="Tienda" component={TiendaScreen} options={{ title: 'Tienda' }} />
     <Stack.Screen name="ProductosTienda" component={ProductosTienda} options={{ title: 'Productos Tienda' }} />
-    <Stack.Screen name="InformacionReseñaScreen" component={InformacionReseñaScreen} />
+    <Stack.Screen name="InformacionReseñaScreen" component={InformacionReseñaScreen} options={{ title: 'Información y Reseña' }} />
+    <Stack.Screen name="Carrito" component={CarritoScreen} options={{ title: 'Carrito de Compras' }} />
   </Stack.Navigator>
 );
 
@@ -85,18 +87,18 @@ const App = () => {
   }, []);
 
   return (
-    <NavigationContainer>
-      <Drawer.Navigator drawerContent={(props) => <SidebarMenu {...props} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}>
-        {isLoggedIn ? (
-          <>
+    <CartProvider>  
+      <NavigationContainer>
+        <Drawer.Navigator drawerContent={(props) => <SidebarMenu {...props} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}>
+          {isLoggedIn ? (
             <Drawer.Screen name="AppStack" component={AppStackNavigator} />
-            <Drawer.Screen name="Tienda" component={TiendaScreen} options={{ title: 'Tienda' }} />
-          </>
-        ) : (
-          <Drawer.Screen name="AuthStack" component={AuthStackNavigator} />
-        )}
-      </Drawer.Navigator>
-    </NavigationContainer>
+          ) : (
+            <Drawer.Screen name="AuthStack" component={AuthStackNavigator} />
+          )}
+          <Drawer.Screen name="Tienda" component={TiendaScreen} options={{ title: 'Tienda' }} />
+        </Drawer.Navigator>
+      </NavigationContainer>
+    </CartProvider>
   );
 };
 
