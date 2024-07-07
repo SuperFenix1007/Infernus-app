@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, TextInput, ScrollView } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
+import { CartContext } from '../components/CartContext';
 
 const InformacionReseñaScreen = ({ route, navigation }) => {
   const { producto } = route.params;
   const [cantidad, setCantidad] = useState(1);
   const [rating, setRating] = useState(0);
   const [review, setReview] = useState('');
+  const { addToCart } = useContext(CartContext);
 
   const handleAddToCart = () => {
-    console.log('Producto agregado al carrito');
+    const productToAdd = { ...producto, quantity: cantidad };
+    addToCart(productToAdd);
+    alert('Producto agregado al carrito');
   };
 
   const handleAddToWishlist = () => {

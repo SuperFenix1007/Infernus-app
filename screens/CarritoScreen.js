@@ -11,7 +11,7 @@ const CarritoScreen = ({ navigation }) => {
 
   const handleCheckout = () => {
     clearCart();
-    alert('Purchase completed!');
+    alert('Compra realizada con éxito');
     navigation.navigate('Tienda');
   };
 
@@ -23,8 +23,10 @@ const CarritoScreen = ({ navigation }) => {
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <View style={styles.item}>
-            <Text>{item.name}</Text> 
-            <Button title="Remove" onPress={() => handleRemoveItem(item.id)} />
+            <Text>{item.name}</Text>
+            <Text>Cantidad: {item.quantity}</Text>
+            <Text>Precio: ${item.price}</Text>
+            <Button title="Eliminar" onPress={() => handleRemoveItem(item.id)} />
           </View>
         )}
       />

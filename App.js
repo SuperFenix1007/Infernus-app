@@ -15,8 +15,9 @@ import PerfilScreen from './screens/PerfilScreen';
 import SidebarMenu from './components/SidebarMenu';
 import ProductosTienda from './screens/ProductosTienda';
 import InformacionReseñaScreen from './screens/InformacionReseñaScreen';
-import CarritoScreen from './screens/CarritoScreen';  
+import CarritoScreen from './screens/CarritoScreen';   
 import { CartProvider } from './components/CartContext';
+
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -68,7 +69,7 @@ const AppStackNavigator = () => (
     <Stack.Screen name="Perfil" component={PerfilScreen} options={{ title: 'Perfil' }} />
     <Stack.Screen name="ProductosTienda" component={ProductosTienda} options={{ title: 'Productos Tienda' }} />
     <Stack.Screen name="InformacionReseñaScreen" component={InformacionReseñaScreen} options={{ title: 'Información y Reseña' }} />
-    <Stack.Screen name="Carrito" component={CarritoScreen} options={{ title: 'Carrito de Compras' }} />
+    <Stack.Screen name="CarritoScreen" component={CarritoScreen} options={{ title: 'Carrito de Compras' }} />
   </Stack.Navigator>
 );
 

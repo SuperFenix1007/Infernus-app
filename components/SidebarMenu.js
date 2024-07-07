@@ -23,6 +23,9 @@ const SidebarMenu = (props) => {
             <TouchableOpacity style={styles.menuItem} onPress={() => props.navigation.navigate('Perfil')}>
               <Text style={styles.menuItemText}>Perfil</Text>
             </TouchableOpacity>
+            <TouchableOpacity style={styles.menuItem} onPress={() => props.navigation.navigate('CarritoScreen')}>
+              <Text style={styles.menuItemText}>Carrito</Text>
+            </TouchableOpacity>   
           </>
         )}
       </DrawerContentScrollView>

@@ -7,15 +7,9 @@
     <list default="true" id="ae2063e0-035c-4606-8785-8a750d1da25b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/CreateAccountForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/CreateAccountForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/LoginForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/PerfilComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/PerfilComponent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/SidebarMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/SidebarMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/DashboardScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/DashboardScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/PerfilScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/PerfilScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/ProductosTienda.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ProductosTienda.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/CarritoScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/CarritoScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/InformacionReseñaScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/InformacionReseñaScreen.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
